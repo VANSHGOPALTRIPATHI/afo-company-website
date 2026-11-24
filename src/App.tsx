@@ -2995,4 +2995,20 @@ export default function App() {
               {AGENCY_CONFIG.tagline}
             </p>
             <p>Digital Marketing & Video Promotion Agency • {AGENCY_CONFIG.location.full}</p>
-          </div>
+          </div>        </div>
+      </footer>
+
+      {/* FLOATING WHATSAPP ENQUIRY BUTTON */}
+      <a
+        href={AGENCY_CONFIG.whatsapp.getUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Enquire with AFO Company on WhatsApp"
+        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm shadow-2xl shadow-emerald-950/40 transition transform hover:scale-105"
+      >
+        <MessageCircle className="w-5 h-5 fill-current" />
+        <span className="hidden sm:inline">WhatsApp Enquiry</span>
+      </a>
+    </div>
+  );
+}
