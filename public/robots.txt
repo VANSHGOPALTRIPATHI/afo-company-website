@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://afo-company-website-lesn.vercel.app/sitemap.xml
