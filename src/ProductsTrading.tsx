@@ -23,13 +23,15 @@ import {
 
 type Category = 'all' | 'clothing' | 'electronics';
 
+type CategoryGroup = { title: string; detail: string; icon: React.ComponentType<{ className?: string }> };
+
 type Props = {
   category: Category;
   onNavigate: (route: string) => void;
   getWhatsAppUrl: (message: string) => string;
 };
 
-const clothingGroups = [
+const clothingGroups: CategoryGroup[] = [
   { title: 'Men’s Clothing', detail: 'Everyday wear, formalwear, casualwear and more.', icon: Shirt },
   { title: 'Women’s Clothing', detail: 'Ethnic, western, casual and occasion wear.', icon: ShoppingBag },
   { title: 'Kids’ Clothing', detail: 'Clothing options for babies, kids and teens.', icon: Baby },
@@ -38,7 +40,7 @@ const clothingGroups = [
   { title: 'Footwear & Accessories', detail: 'Shoes, bags, belts and fashion accessories.', icon: Footprints }
 ];
 
-const electronicsGroups = [
+const electronicsGroups: CategoryGroup[] = [
   { title: 'Mobiles & Smartphones', detail: 'Ask about available phone models and options.', icon: Smartphone },
   { title: 'Laptops & Computers', detail: 'Laptops, desktops and computer accessories.', icon: Laptop },
   { title: 'Televisions & Displays', detail: 'Televisions, monitors and display products.', icon: Tv },
@@ -65,7 +67,7 @@ export default function ProductsTrading({ category, onNavigate, getWhatsAppUrl }
     window.open(getWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
   };
 
-  const renderGroup = (items: typeof clothingGroups, department: string) => (
+  const renderGroup = (items: CategoryGroup[], department: string) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {items.map((item) => {
         const Icon = item.icon;
