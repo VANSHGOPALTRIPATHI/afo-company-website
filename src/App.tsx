@@ -1394,54 +1394,52 @@ const HomePage = ({ navigateTo, selectServiceAndEnquire }) => {
         </div>
       </section>
 
-      {/* SECTION 7: CUSTOMER REVIEWS PREVIEW (TRANSPARENT PLACEHOLDERS) */}
+      {/* SECTION 7: WHY BUSINESSES CHOOSE AFO */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1769FF]">
-                Client Feedback Framework
-              </span>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-black text-[#071B55]">
-                Trusted Promotion. Better Business Connections.
-              </h2>
-            </div>
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#1769FF]">
+              The AFO Approach
+            </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-black text-[#071B55]">
+              Thoughtful Promotion for Growing Businesses
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              From the first conversation to campaign delivery, we keep the focus on your
+              business, your audience, and the message you want to share.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article className="p-6 rounded-2xl bg-[#F5F8FF] border border-slate-200">
+              <MessageCircle className="w-6 h-6 text-[#1769FF] mb-4" />
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Understand Your Goals</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                We begin by understanding your business, audience, location, and promotional needs.
+              </p>
+            </article>
+            <article className="p-6 rounded-2xl bg-[#F5F8FF] border border-slate-200">
+              <Video className="w-6 h-6 text-[#1769FF] mb-4" />
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Create With Purpose</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Plan engaging creatives, social media content, and promotional videos around your message.
+              </p>
+            </article>
+            <article className="p-6 rounded-2xl bg-[#F5F8FF] border border-slate-200">
+              <Target className="w-6 h-6 text-[#1769FF] mb-4" />
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Promote Strategically</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Choose campaign activities that align with your objectives, audience, and budget.
+              </p>
+            </article>
+          </div>
+          <div className="mt-8">
             <button
               type="button"
               onClick={() => navigateTo('contact')}
               className="inline-flex items-center gap-2 text-sm font-bold text-[#1769FF] hover:text-[#071B55] cursor-pointer"
             >
-              View Reviews & Contact Page <ArrowRight className="w-4 h-4" />
+              Talk to AFO Company <ArrowRight className="w-4 h-4" />
             </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {REVIEW_PLACEHOLDERS.map((rev) => (
-              <div
-                key={rev.id}
-                className="p-6 rounded-2xl bg-[#F5F8FF] border border-dashed border-[#1769FF]/40 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-900">
-                      Development Placeholder
-                    </span>
-                    <div className="flex items-center gap-0.5 text-[#FFC928]">
-                      {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-sm text-slate-600 italic leading-relaxed mb-4">
-                    “{rev.feedback}”
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-slate-200/80">
-                  <div className="text-sm font-bold text-[#071B55]">{rev.customerName}</div>
-                  <div className="text-xs text-slate-500">{rev.businessCategory}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
