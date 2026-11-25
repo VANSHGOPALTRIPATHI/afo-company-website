@@ -479,35 +479,7 @@ Scene Sequence:
 - [00:34-00:40] Deep Royal Blue (#071B55) luxury end-slate with the golden crown "AFO Company" logo watermark, Hindi headline "अब अपने बिजनेस को दीजिए एक नई पहचान!", English tagline "Your Business, Our Promotion!", Location "Katni, Madhya Pradesh, India", and Phone "9009433331 / 9713433331".
 Audio: Authoritative, warm male/female Hindi voiceover with clean English lower-third subtitles throughout.`;
 
-const REVIEW_PLACEHOLDERS = [
-  {
-    id: 'placeholder-1',
-    slotLabel: 'Verified Client Slot #01',
-    customerName: '[Client Name — Pending Verification]',
-    businessCategory: 'Retail Showroom / Local Business (Katni)',
-    rating: 5,
-    feedback:
-      'Development Placeholder: Verified feedback from an AFO Company retail promotion client will be published here once approved by the business owner.'
-  },
-  {
-    id: 'placeholder-2',
-    slotLabel: 'Verified Client Slot #02',
-    customerName: '[Client Name — Pending Verification]',
-    businessCategory: 'Hotel & Restaurant Promotion',
-    rating: 5,
-    feedback:
-      'Development Placeholder: Verified testimonial highlighting social media reels and video promotion results will be displayed here upon client confirmation.'
-  },
-  {
-    id: 'placeholder-3',
-    slotLabel: 'Verified Client Slot #03',
-    customerName: '[Client Name — Pending Verification]',
-    businessCategory: 'Real Estate & Residential Project',
-    rating: 5,
-    feedback:
-      'Development Placeholder: Verified review detailing Facebook, Instagram, and WhatsApp campaign enquiries will appear in this slot.'
-  }
-];
+
 
 /**
  * ============================================================================
@@ -1422,54 +1394,52 @@ const HomePage = ({ navigateTo, selectServiceAndEnquire }) => {
         </div>
       </section>
 
-      {/* SECTION 7: CUSTOMER REVIEWS PREVIEW (TRANSPARENT PLACEHOLDERS) */}
+      {/* SECTION 7: WHY BUSINESSES CHOOSE AFO */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1769FF]">
-                Client Feedback Framework
-              </span>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-black text-[#071B55]">
-                Trusted Promotion. Better Business Connections.
-              </h2>
-            </div>
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#1769FF]">
+              The AFO Approach
+            </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-black text-[#071B55]">
+              Thoughtful Promotion for Growing Businesses
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              From the first conversation to campaign delivery, we keep the focus on your
+              business, your audience, and the message you want to share.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article className="p-6 rounded-2xl bg-[#F5F8FF] border border-slate-200">
+              <MessageCircle className="w-6 h-6 text-[#1769FF] mb-4" />
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Understand Your Goals</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                We begin by understanding your business, audience, location, and promotional needs.
+              </p>
+            </article>
+            <article className="p-6 rounded-2xl bg-[#F5F8FF] border border-slate-200">
+              <Video className="w-6 h-6 text-[#1769FF] mb-4" />
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Create With Purpose</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Plan engaging creatives, social media content, and promotional videos around your message.
+              </p>
+            </article>
+            <article className="p-6 rounded-2xl bg-[#F5F8FF] border border-slate-200">
+              <Target className="w-6 h-6 text-[#1769FF] mb-4" />
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Promote Strategically</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Choose campaign activities that align with your objectives, audience, and budget.
+              </p>
+            </article>
+          </div>
+          <div className="mt-8">
             <button
               type="button"
               onClick={() => navigateTo('contact')}
               className="inline-flex items-center gap-2 text-sm font-bold text-[#1769FF] hover:text-[#071B55] cursor-pointer"
             >
-              View Reviews & Contact Page <ArrowRight className="w-4 h-4" />
+              Talk to AFO Company <ArrowRight className="w-4 h-4" />
             </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {REVIEW_PLACEHOLDERS.map((rev) => (
-              <div
-                key={rev.id}
-                className="p-6 rounded-2xl bg-[#F5F8FF] border border-dashed border-[#1769FF]/40 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-900">
-                      Development Placeholder
-                    </span>
-                    <div className="flex items-center gap-0.5 text-[#FFC928]">
-                      {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-sm text-slate-600 italic leading-relaxed mb-4">
-                    “{rev.feedback}”
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-slate-200/80">
-                  <div className="text-sm font-bold text-[#071B55]">{rev.customerName}</div>
-                  <div className="text-xs text-slate-500">{rev.businessCategory}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -2067,45 +2037,26 @@ const ReviewsAndContactPage = ({ preselectedService }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setSubmitState({ status: 'submitting', feedbackMessage: '' });
+    // WhatsApp requires the customer to confirm by tapping Send; the website
+    // can open a pre-filled message but cannot send a WhatsApp message silently.
+    const whatsappUrl = AGENCY_CONFIG.whatsapp.getUrl(buildFormattedEnquiryText());
+    const whatsappWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
-    // Check if an external Formspree / Webhook endpoint is configured in AGENCY_CONFIG
-    if (AGENCY_CONFIG.enquiryForm.endpointUrl) {
-      try {
-        const res = await fetch(AGENCY_CONFIG.enquiryForm.endpointUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            ...formData,
-            recipientAgency: AGENCY_CONFIG.companyName,
-            recipientEmail: AGENCY_CONFIG.email
-          })
-        });
-        if (!res.ok) throw new Error('Submission failed');
-        setSubmitState({
-          status: 'success',
-          feedbackMessage:
-            'Thank you! Your business enquiry has been transmitted to AFO Company. Our team will contact you shortly.'
-        });
-      } catch (err) {
-        setSubmitState({
-          status: 'error',
-          feedbackMessage:
-            'We could not reach the form server right now. Please click "Send Directly via WhatsApp" below for instant delivery.'
-        });
-      }
+    if (whatsappWindow) {
+      setSubmitState({
+        status: 'success',
+        feedbackMessage:
+          'Your enquiry details are ready in WhatsApp. Please review the message and tap Send to deliver it to AFO Company.'
+      });
     } else {
       setSubmitState({
         status: 'unconfigured',
         feedbackMessage:
-          'Your enquiry details are validated and ready! Direct server endpoint is not yet connected (`AGENCY_CONFIG.enquiryForm.endpointUrl`). Use the one-click WhatsApp or Email buttons below to send your enquiry immediately to AFO Company.'
+          'Your browser blocked the WhatsApp window. Use the WhatsApp button below to open your pre-filled enquiry, then tap Send.'
       });
     }
   };
@@ -2137,59 +2088,55 @@ const ReviewsAndContactPage = ({ preselectedService }) => {
         </div>
       </section>
 
-      {/* SECTION A: CUSTOMER REVIEWS (STRICTLY LABELLED DEVELOPMENT PLACEHOLDERS) */}
+      {/* SECTION A: CLIENT EXPERIENCE & SERVICE HIGHLIGHTS */}
       <section className="py-16 sm:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1769FF]">
-                Customer Reviews
-              </span>
-              <h2 className="mt-1 text-2xl sm:text-3xl font-black text-[#071B55]">
-                What Businesses Say About Working With Us
-              </h2>
-            </div>
-
-            <div className="inline-flex items-start gap-2.5 p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-950 text-xs max-w-md">
-              <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-              <span>
-                <strong>Transparency Notice:</strong> The cards below are clearly labelled development placeholders awaiting verified client testimonials from AFO Company.
-              </span>
-            </div>
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#1769FF]">
+              The AFO Experience
+            </span>
+            <h2 className="mt-1 text-2xl sm:text-3xl font-black text-[#071B55]">
+              Promotion That Puts Your Business First
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              Every business has a different story. AFO Company focuses on clear communication,
+              thoughtful creative work, and promotional campaigns shaped around your goals.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {REVIEW_PLACEHOLDERS.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white p-7 rounded-2xl border border-dashed border-[#1769FF]/40 shadow-sm flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="px-2.5 py-1 rounded-md bg-[#F5F8FF] text-[#1769FF] text-[11px] font-extrabold uppercase">
-                      {item.slotLabel}
-                    </span>
-                    <div className="flex items-center gap-0.5 text-[#FFC928]" aria-label="5 Star Rating Layout">
-                      {[...Array(item.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-sm text-slate-600 italic leading-relaxed mb-6">
-                    “{item.feedback}”
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-slate-100">
-                  <div className="text-sm font-bold text-[#071B55]">
-                    {item.customerName}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    {item.businessCategory}
-                  </div>
-                </div>
+            <article className="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#1769FF] flex items-center justify-center mb-5">
+                <MessageCircle className="w-5 h-5" />
               </div>
-            ))}
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Clear Communication</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Discuss your business, audience, and requirements directly with our team before
+                planning a promotion.
+              </p>
+            </article>
+
+            <article className="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
+                <Video className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Creative Promotion</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Present your products and services with engaging social media creatives,
+                promotional videos, and campaign content.
+              </p>
+            </article>
+
+            <article className="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
+                <Target className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-extrabold text-[#071B55] mb-2">Goal-Focused Campaigns</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Choose promotional activities that match your business objectives, location,
+                audience, and budget.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -2521,17 +2468,9 @@ const ReviewsAndContactPage = ({ preselectedService }) => {
                             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition"
                           >
                             <MessageCircle className="w-4 h-4" />
-                            Send Directly via WhatsApp
+                            Open WhatsApp Enquiry
                           </a>
-                          <a
-                            href={`mailto:${AGENCY_CONFIG.email}?subject=${encodeURIComponent(
-                              `Business Enquiry: ${formData.service} - ${formData.businessName}`
-                            )}&body=${encodeURIComponent(buildFormattedEnquiryText())}`}
-                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#071B55] hover:bg-[#1769FF] text-white text-xs font-extrabold transition"
-                          >
-                            <Mail className="w-4 h-4" />
-                            Send via Email App
-                          </a>
+
                         </div>
                       </div>
                     </div>
