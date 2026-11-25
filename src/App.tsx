@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ProductsTrading from './ProductsTrading';
 import {
   Phone,
   Mail,
@@ -2595,7 +2596,7 @@ export default function App() {
 
   // Synchronize with URL hash if user navigates via browser back/forward
   useEffect(() => {
-    const validRoutes = ['home', 'about', 'services', 'team', 'contact'];
+    const validRoutes = ['home', 'about', 'services', 'team', 'contact', 'products', 'clothing', 'electronics'];
     const readHash = () => {
       const rawHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
       if (!rawHash) {
@@ -2639,6 +2640,9 @@ export default function App() {
         description:
           'Contact AFO Company in Katni, Madhya Pradesh. Call 9009433331, 9713433331, or 9644424384, message on WhatsApp, or submit a business enquiry.'
       },
+      products: { title: 'Products & Trading | AFO Company', description: 'Browse clothing and electronics categories from AFO Company and enquire directly on WhatsApp.' },
+      clothing: { title: 'Clothing Collection | AFO Company', description: 'Explore clothing categories at AFO Company and enquire about current availability on WhatsApp.' },
+      electronics: { title: 'Electronics Collection | AFO Company', description: 'Explore electronics categories at AFO Company and enquire about current availability on WhatsApp.' },
       '404': {
         title: 'Page Not Found | AFO Company',
         description: 'The requested page was not found on AFO Company.'
@@ -2687,6 +2691,7 @@ export default function App() {
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Services' },
     { id: 'team', label: 'Our Team' },
+    { id: 'products', label: 'Products & Trading' },
     { id: 'contact', label: 'Reviews & Contact' }
   ];
 
@@ -2845,6 +2850,13 @@ export default function App() {
           />
         )}
         {currentRoute === 'team' && <OurTeamPage navigateTo={navigateTo} />}
+        {['products', 'clothing', 'electronics'].includes(currentRoute) && (
+          <ProductsTrading
+            category={currentRoute === 'clothing' ? 'clothing' : currentRoute === 'electronics' ? 'electronics' : 'all'}
+            onNavigate={navigateTo}
+            getWhatsAppUrl={(message) => AGENCY_CONFIG.whatsapp.getUrl(message)}
+          />
+        )}
         {currentRoute === 'contact' && (
           <ReviewsAndContactPage preselectedService={preselectedService} />
         )}
