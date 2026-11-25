@@ -23,7 +23,7 @@ import {
 
 type Category = 'all' | 'clothing' | 'electronics';
 
-type CategoryGroup = { title: string; detail: string; icon: React.ComponentType<{ className?: string }> };
+type CategoryGroup = { title: string; detail: string; icon: React.ElementType };
 
 type Props = {
   category: Category;
