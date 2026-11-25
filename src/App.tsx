@@ -2037,45 +2037,26 @@ const ReviewsAndContactPage = ({ preselectedService }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setSubmitState({ status: 'submitting', feedbackMessage: '' });
+    // WhatsApp requires the customer to confirm by tapping Send; the website
+    // can open a pre-filled message but cannot send a WhatsApp message silently.
+    const whatsappUrl = AGENCY_CONFIG.whatsapp.getUrl(buildFormattedEnquiryText());
+    const whatsappWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
-    // Check if an external Formspree / Webhook endpoint is configured in AGENCY_CONFIG
-    if (AGENCY_CONFIG.enquiryForm.endpointUrl) {
-      try {
-        const res = await fetch(AGENCY_CONFIG.enquiryForm.endpointUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            ...formData,
-            recipientAgency: AGENCY_CONFIG.companyName,
-            recipientEmail: AGENCY_CONFIG.email
-          })
-        });
-        if (!res.ok) throw new Error('Submission failed');
-        setSubmitState({
-          status: 'success',
-          feedbackMessage:
-            'Thank you! Your business enquiry has been transmitted to AFO Company. Our team will contact you shortly.'
-        });
-      } catch (err) {
-        setSubmitState({
-          status: 'error',
-          feedbackMessage:
-            'We could not reach the form server right now. Please click "Send Directly via WhatsApp" below for instant delivery.'
-        });
-      }
+    if (whatsappWindow) {
+      setSubmitState({
+        status: 'success',
+        feedbackMessage:
+          'Your enquiry details are ready in WhatsApp. Please review the message and tap Send to deliver it to AFO Company.'
+      });
     } else {
       setSubmitState({
         status: 'unconfigured',
         feedbackMessage:
-          'Your enquiry details are validated and ready! Direct server endpoint is not yet connected (`AGENCY_CONFIG.enquiryForm.endpointUrl`). Use the one-click WhatsApp or Email buttons below to send your enquiry immediately to AFO Company.'
+          'Your browser blocked the WhatsApp window. Use the WhatsApp button below to open your pre-filled enquiry, then tap Send.'
       });
     }
   };
@@ -2487,17 +2468,9 @@ const ReviewsAndContactPage = ({ preselectedService }) => {
                             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition"
                           >
                             <MessageCircle className="w-4 h-4" />
-                            Send Directly via WhatsApp
+                            Open WhatsApp Enquiry
                           </a>
-                          <a
-                            href={`mailto:${AGENCY_CONFIG.email}?subject=${encodeURIComponent(
-                              `Business Enquiry: ${formData.service} - ${formData.businessName}`
-                            )}&body=${encodeURIComponent(buildFormattedEnquiryText())}`}
-                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#071B55] hover:bg-[#1769FF] text-white text-xs font-extrabold transition"
-                          >
-                            <Mail className="w-4 h-4" />
-                            Send via Email App
-                          </a>
+
                         </div>
                       </div>
                     </div>
