@@ -1689,7 +1689,7 @@ const ServicesPage = ({ selectServiceAndEnquire, navigateTo }) => {
                   const el = document.getElementById(`service-${srv.id}`);
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#FFC928] hover:text-[#071B55] text-xs font-semibold text-blue-100 transition"
+                className="w-full sm:w-auto px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#FFC928] hover:text-[#071B55] text-xs font-semibold text-blue-100 transition"
               >
                 {srv.number}. {srv.title}
               </a>
